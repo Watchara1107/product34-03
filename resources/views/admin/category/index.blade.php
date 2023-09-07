@@ -43,16 +43,18 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($category as $cat)
                                 <tr>
-                                    <td>1</td>
-                                    <td>001.jpg</td>
-                                    <td>Prohaska</td>
-                                    <td>12,000</td>
+                                    <td>{{ $category->firstItem() + $loop->index }}</td>
+                                    <td>{{ $cat->name }}</td>
+                                    <td>{{ $cat->created_at }}</td>
+                                    <td>{{ $cat->updated_at }}</td>
                                     <td>
-                                        <a href="" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
-                                        <a href="" class="btn btn-danger text-light"> <i class="fas fa-trash"></i> </a>
+                                        <a href="{{ url('admin/category/edit/'.$cat->category_id) }}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+                                        <a href="{{ url('admin/category/delete/'.$cat->category_id) }}" class="btn btn-danger text-light"> <i class="fas fa-trash"></i> </a>
                                     </td>
                                 </tr>
+                                @endforeach
                               
                             </tbody>
                         </table>

@@ -38,11 +38,21 @@ Route::get('/admin/logout',[ProfileController::class, 'logout'])->name('logout')
 //เมนูสินค้า
 Route::get('admin/product/index',[ProductController::class, 'index']);
 Route::get('admin/product/create',[ProductController::class, 'create']);
+Route::post('admin/product/insert',[ProductController::class, 'insert']);
+Route::get('admin/product/delete/{id}',[ProductController::class, 'delete']);
+Route::get('admin/product/edit/{id}',[ProductController::class, 'edit']);
+Route::post('admin/product/update/{id}',[ProductController::class, 'update']);
+
+
 
 
 //เมนูประเภทสินค้า
 Route::get('admin/category/index',[CategoryController::class, 'index']);
 Route::get('admin/category/create',[CategoryController::class, 'create']);
+Route::post('admin/category/insert',[CategoryController::class, 'insert']);
+Route::get('admin/category/edit/{id}',[CategoryController::class, 'edit']);
+Route::post('admin/category/update/{id}',[CategoryController::class, 'update']);
+Route::get('admin/category/delete/{id}',[CategoryController::class, 'delete']);
 
 //เมนูการจอง
 Route::get('admin/reserve/index',[ReserveController::class, 'index']);

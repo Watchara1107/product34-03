@@ -9,7 +9,6 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('admin/product/index') }}">Products</a></li>
-
                     </ol>
                 </nav>
             </div>
@@ -45,18 +44,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($product as $pro)
                                 <tr>
-                                    <td>1</td>
-                                    <td>001.jpg</td>
-                                    <td>Prohaska</td>
-                                    <td>12,000</td>
-                                    <td>เพชร</td>
-                                    <td>Domo</td>
+                                    <td>{{ $product->firstItem() + $loop->index }}</td>
                                     <td>
-                                        <a href="" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
-                                        <a href="" class="btn btn-danger text-light"> <i class="fas fa-trash"></i> </a>
+                                        <img src="{{ asset('backend/images/'.$pro->image) }}" width="150px" alt="">
+                                    </td>
+                                    <td>{{ $pro->name }}</td>
+                                    <td>{{ $pro->price }}</td>
+                                    <td>{{ $pro->type->name }}</td>
+                                    <td>{{ $pro->description }}</td>
+                                    <td>
+                                        <a href="{{ url('admin/product/edit/'.$pro->product_id) }}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+                                        <a href="{{ url('admin/product/delete/'.$pro->product_id) }}" class="btn btn-danger text-light"> <i class="fas fa-trash"></i> </a>
                                     </td>
                                 </tr>
+                                @endforeach
                               
                             </tbody>
                         </table>
